@@ -28,8 +28,11 @@ Converted the tutorial in the Jupyter notebook format to a regular Python file a
 I had a problem in matplotlib's plot to actually display the generated images, so I added code to save images on the file system.
 
 ## Step 3. Create your own dataset for object detection.
-I used my iPhone and recorded a video of my dogs Aimee and Pink for about 5 minutes.  For 30 frames/second, this should result
-in 9000 images if I export each frame.  For now, I plan on exporting 2 frames for each second which translates to 600 images.
+I used my iPhone and recorded a video of my dogs Aimee and Pink for about 4 minutes 40 seconds.  I exported jpeg images from the MOV file with 3 frames/second.
+
+```
+ffmpeg -i IMG_6204.MOV -vf fps=3 ../frames/aimee_pink_%05d.jpg
+```
 
 ## Step 4. Mark bounding boxes.
 This is a two step process.
