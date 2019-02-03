@@ -23,6 +23,7 @@ git clone https//github.com/tensorflow/model
 ```
 
 Download required packages as specified in the repo.
+Converted the tutorial in the Jupyter notebook format to a regular Python file as I find it easier for me to work with.
 
 I had a problem in matplotlib's plot to actually display the generated images, so I added code to save images on the file system.
 
@@ -37,5 +38,8 @@ This is a two step process.
 ### Actually tag photos
 
 
+## Step 7. Train the model.
+I wasn't able to locate train.py at the object_detection directory where others listed in their articles.
+I did a search on the internet and found out that the script was moved to the directory called legacy.
 
 
