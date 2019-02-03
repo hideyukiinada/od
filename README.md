@@ -17,6 +17,15 @@ I believe the complete steps to re-train the model for your custom dataset seem 
 
 So far I've done through step 3.
 
+## Step 1. Git clone the the TensorFlow objection detection API code from their github repo.
+```
+git clone https//github.com/tensorflow/model
+```
+
+Download required packages as specified in the repo.
+
+I had a problem in matplotlib's plot to actually display the generated images, so I added code to save images on the file system.
+
 ## Step 3. Create your own dataset for object detection.
 I used my iPhone and recorded a video of my dogs Aimee and Pink for about 5 minutes.  For 30 frames/second, this should result
 in 9000 images if I export each frame.  For now, I plan on exporting 2 frames for each second which translates to 600 images.
