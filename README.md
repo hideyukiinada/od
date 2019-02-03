@@ -37,6 +37,30 @@ ffmpeg -i IMG_6204.MOV -vf fps=3 ../frames/aimee_pink_%05d.jpg
 ## Step 4. Mark bounding boxes.
 This is a two step process.
 ### Download and build labelimg
+https://github.com/tzutalin/labelImg has steps to install.
+It was referring to py2app which I haven't used, so I looked it up:
+https://pypi.org/project/py2app/
+
+Per the steps, I did:
+```
+pip install py2app
+pip install PyQt5
+```
+After installing PyQt5, I typed:
+```
+  pyrcc5
+```  
+to make sure that pyqt5 was successfully installed.
+  
+I already had lxml so pip install lxml did not install it.
+
+```
+make qt5py3
+```
+resulted in:
+```
+make: *** No rule to make target `qt5py3'.  Stop.
+```
 
 ### Actually tag photos
 
