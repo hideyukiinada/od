@@ -28,7 +28,7 @@ Converted the tutorial in the Jupyter notebook format to a regular Python file a
 I had a problem in matplotlib's plot to actually display the generated images, so I added code to save images on the file system.
 
 ## Step 3. Create your own dataset for object detection.
-I used my iPhone and recorded a video of my dogs Aimee and Pink for about 4 minutes 40 seconds.  I exported jpeg images from the MOV file with 3 frames/second.
+I used my iPhone and recorded a video of my dogs Aimee and Pink for about 4 minutes 40 seconds.  I exported jpeg images from the MOV file with 3 frames/second.  I got 839 jpeg images with the below command:
 
 ```
 ffmpeg -i IMG_6204.MOV -vf fps=3 ../frames/aimee_pink_%05d.jpg
