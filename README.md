@@ -71,4 +71,6 @@ Using labelImg was straightforward, but it took a long time to go through.  I an
 I wasn't able to locate train.py at the object_detection directory where others listed in their articles.
 I did a search on the internet and found out that the script was moved to the directory called legacy.
 
+# References
+Priyanka Kochhar, Building a Toy Detector with Tensorflow Object Detection API, https://www.kdnuggets.com/2018/02/building-toy-detector-tensorflow-object-detection-api.html
 
