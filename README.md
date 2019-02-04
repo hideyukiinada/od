@@ -67,9 +67,11 @@ Note: I already had lxml so pip install lxml did not install it.
 ### Actually tag photos
 Using labelImg was straightforward, but it took a long time to go through.  I annotated 707 files with Pascal VOC format.  (I went through 749 images and some of the images did not have any dogs, and I also annotated 3 images with the text format by mistake.)
 
-As suggested in [1], I will be using:
+### Converting images to TF Records
+I looked at both:
+https://github.com/tensorflow/models/blob/master/research/object_detection/dataset_tools/create_pascal_tf_record.py
 https://github.com/tensorflow/models/blob/master/research/object_detection/dataset_tools/create_pet_tf_record.py
-
+I'm considering using create_pascal_tf_record due to simplicity.  I'll update this page once the conversion is done. 
 
 ## Step 7. Train the model.
 I wasn't able to locate train.py at the object_detection directory where others listed in their articles.
@@ -77,4 +79,5 @@ I did a search on the internet and found out that the script was moved to the di
 
 # References
 [1] Priyanka Kochhar, Building a Toy Detector with Tensorflow Object Detection API, https://www.kdnuggets.com/2018/02/building-toy-detector-tensorflow-object-detection-api.html
+[2] Dat Tran, How to train your own Object Detector with TensorFlow’s Object Detector API, https://towardsdatascience.com/how-to-train-your-own-object-detector-with-tensorflows-object-detector-api-bec72ecfe1d9
 
