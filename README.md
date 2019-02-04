@@ -41,26 +41,28 @@ https://github.com/tzutalin/labelImg has steps to install.
 It was referring to py2app which I haven't used, so I looked it up:
 https://pypi.org/project/py2app/
 
-Per the steps, I did:
+I followed the steps the listed on the above page.  As I already had python & pip set up, I started with:
 ```
 pip install py2app
 pip install PyQt5
 ```
 After installing PyQt5, I typed:
 ```
-  pyrcc5
+pyrcc5
 ```  
 to make sure that pyqt5 was successfully installed.
-  
-I already had lxml so pip install lxml did not install it.
 
 ```
+git clone https://github.com/tzutalin/labelImg 
+cd labelImg 
 make qt5py3
+rm -rf build dist
+python setup.py py2app -A
+mv "dist/labelImg.app" /Applications
 ```
-resulted in:
-```
-make: *** No rule to make target `qt5py3'.  Stop.
-```
+ 
+Note: I already had lxml so pip install lxml did not install it.
+
 
 ### Actually tag photos
 
