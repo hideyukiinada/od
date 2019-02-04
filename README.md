@@ -50,7 +50,7 @@ After installing PyQt5, I typed:
 ```
 pyrcc5
 ```  
-to make sure that pyqt5 was successfully installed.
+to verify that pyqt5 was successfully installed.
 
 ```
 git clone https://github.com/tzutalin/labelImg 
@@ -65,7 +65,7 @@ Note: I already had lxml so pip install lxml did not install it.
 
 
 ### Actually tag photos
-
+Using labelImg was straightforward, but it took a long time to go through.  I annotated 707 files with Pascal VOC format.  (I went through 749 images and some of the images did not have any dogs, and I also annotated 3 images with the text format by mistake.)
 
 ## Step 7. Train the model.
 I wasn't able to locate train.py at the object_detection directory where others listed in their articles.
