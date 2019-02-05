@@ -97,6 +97,11 @@ I tweaked the train.py to do the following:
 I stopped training at 30956 step with loss = 0.0803
 The last step took 0.233 sec/step.
 
+I believe that you need to follow the instructions below page to export the model:
+https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/exporting_models.md
+
+Note I haven't done this process myself yet.
+
 # References
 [1] Priyanka Kochhar, Building a Toy Detector with Tensorflow Object Detection API, https://www.kdnuggets.com/2018/02/building-toy-detector-tensorflow-object-detection-api.html
 [2] Dat Tran, How to train your own Object Detector with TensorFlow’s Object Detector API, https://towardsdatascience.com/how-to-train-your-own-object-detector-with-tensorflows-object-detector-api-bec72ecfe1d9
