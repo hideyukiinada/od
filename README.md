@@ -68,10 +68,11 @@ Note: I already had lxml so pip install lxml did not install it.
 Using labelImg was straightforward, but it took a long time to go through.  I annotated 707 files with Pascal VOC format.  (I went through 749 images and some of the images did not have any dogs, and I also annotated 3 images with the text format by mistake.)
 
 ### Converting images to TF Records
-I looked at both:
-https://github.com/tensorflow/models/blob/master/research/object_detection/dataset_tools/create_pascal_tf_record.py
+I used which was included in the source code and tweaked:
 https://github.com/tensorflow/models/blob/master/research/object_detection/dataset_tools/create_pet_tf_record.py
-I'm considering using create_pascal_tf_record due to simplicity.  I'll update this page once the conversion is done. 
+
+At the end, I was able to create a file:
+dog.tfrecords
 
 ## Step 7. Train the model.
 I wasn't able to locate train.py at the object_detection directory where others listed in their articles.
