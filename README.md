@@ -92,6 +92,10 @@ I wasn't able to locate train.py at the object_detection directory where others 
 I did a search on the internet and found out that the script was moved to the directory called legacy.
 
 I tweaked the train.py to do the following:
+??? (to be updated)
+
+I stopped training at 30956 step with loss = 0.0803
+The last step took 0.233 sec/step.
 
 # References
 [1] Priyanka Kochhar, Building a Toy Detector with Tensorflow Object Detection API, https://www.kdnuggets.com/2018/02/building-toy-detector-tensorflow-object-detection-api.html
