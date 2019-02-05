@@ -57,6 +57,8 @@ You want to convert this to a Python script by typing:
 jupyter nbconvert --to script object_detection.ipynb
 ```
 
+This produces a script called object_detection.py in the current directory.
+
 At the end of the script, it contains the code to display a sample image using matplotlib, but I had a problem in matplotlib on my box, so I added code to save images on the file system using the PIL package.
 
 At the end of the step, 
@@ -109,6 +111,52 @@ Marking a location for each object means:
 
 * Identify an object in each image
 * Marking a bounding box for each object.
+
+At the end of this step, for each image file, you want to have a corresponding file that containing the coordinates of objects in the image.
+
+Below is the actual file that was created for the image aimee_pink_00298.jpg.
+```
+<annotation>
+        <folder>frames</folder>
+        <filename>aimee_pink_00298.jpg</filename>
+        <path>/Volumes/Toshiba/data/programs/ai/dataset/od_aimee_pink/frames/aimee_pink_00298.jpg</path>
+        <source>
+                <database>Unknown</database>
+        </source>
+        <size>
+                <width>1920</width>
+                <height>1080</height>
+                <depth>3</depth>
+        </size>
+        <segmented>0</segmented>
+        <object>
+                <name>aimee</name>
+                <pose>Unspecified</pose>
+                <truncated>1</truncated>
+                <difficult>0</difficult>
+                <bndbox>
+                        <xmin>1165</xmin>
+                        <ymin>1</ymin>
+                        <xmax>1920</xmax>
+                        <ymax>826</ymax>
+                </bndbox>
+        </object>
+        <object>
+                <name>pink</name>
+                <pose>Unspecified</pose>
+                <truncated>1</truncated>
+                <difficult>0</difficult>
+                <bndbox>
+                        <xmin>568</xmin>
+                        <ymin>1</ymin>
+                        <xmax>1095</xmax>
+                        <ymax>815</ymax>
+                </bndbox>
+        </object>
+</annotation>
+
+```
+
 
 Using labelImg was straightforward, but it took a long time to go through.  I annotated 707 files with Pascal VOC format.  (I went through 749 images and some of the images did not have any dogs, and I also annotated 3 images with the text format by mistake.)
 
