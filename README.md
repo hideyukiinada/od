@@ -15,7 +15,7 @@ Here are the logical steps:
 3. Create your own dataset for object detection
 4. Download the pre-trained model to use as a base
 5. Train the model with your dataset
-6. Export the model after the training
+6. Convert the model to be used for prediction
 7. Run prediction with the model
 
 No matter what ML software you use, I believe that these steps are the same or similar.
