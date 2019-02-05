@@ -4,16 +4,50 @@ Hide Inada
 # Overview
 Object detection is used to automatically identify the position of objects in an image.
 This is a huge advance comparing with image classification which only provides the class of an object.
-If you use pre-trained model, it is really easy to do this, but you can only classify the location of objects the model was trained for. For example, the below photo shows images of puppies with my dog Aimee at a puppy social. Though all puppies were detected, they are all marked as a dog, and you don't know which one is Aimee.  For you to detect an object that was not in the model, then more steps are needed.
+For example, [my image classification app](https://github.com/hideyukiinada/ic) can predict 1000 classes, but does not return the location of each object.
+Is it difficult to use a machine learning system detect an object?  Not really.  If you use a pre-trained model, it is easy to do so.  However you can only classify the location of objects the model was trained for. For example, the below photo shows images of puppies with my dog Aimee at a puppy social. Though all puppies were detected, they are all marked as a dog, and you don't know which one is Aimee.  
 
-Specifically logical steps are:
+For you to detect an object that was not in the model, then more steps are needed.
+
+Here are the logical steps:
 1. Obtain the machine learning software
 2. Verify that object detection works with sample images
 3. Create your own dataset for object detection
-5. Download the pre-trained model to use as a base
-7. Train the model with your dataset
-8. Export the model after the training
-9. Run prediction with the model
+4. Download the pre-trained model to use as a base
+5. Train the model with your dataset
+6. Export the model after the training
+7. Run prediction with the model
+
+No matter what ML software you use, I believe that these steps are the same or similar.
+Using these steps, I was able to train the model with my own dataset and used the model for predicting positions of my dogs.
+
+I used TensorFlow Object Detection API, and I would like to go over step-by-step how I did it.
+
+I'd also like to thank authors of articles I used as a reference.  They are listed at the bottom of this page.
+
+# Step 1. Obtain the machine learning software
+## 1.1 Set up TensorFlow
+You need TensorFlow on your machine.
+[This page on TensorFlow website](https://www.tensorflow.org/install/pip) has instructions.
+
+## 1.2 Download Object Detection API source code
+```
+git clone https//github.com/tensorflow/model
+```
+
+## 1.3 Navigate to the main directory
+Once you check out the code, cd into the main directory:
+```
+cd models/research/object_detection
+```
+You can also have a look at [read me on Github](https://github.com/tensorflow/models/tree/master/research/object_detection).
+
+## 1.4 Convert the tutorial from Jupyter notebook to a regular Python file (Optional)
+This step is optional if you like to work with Jupyter notebook instead of a regular Python script.
+
+Converted the tutorial in the Jupyter notebook format to a regular Python file as I find it easier for me to work with.
+
+I had a problem in matplotlib's plot to actually display the generated images, so I added code to save images on the file system.
 
 I started working on playing with object detection using TensorFlow's object detection API, so I'll use this page to record steps I have taken.  This is still work in progress and this note is for me so that I won't forget the steps I had to take.
 
@@ -32,14 +66,7 @@ I believe the complete steps to re-train the model for your custom dataset seem 
 So far I've done through step 3.
 
 ## Step 1. Git clone the the TensorFlow objection detection API code from their github repo.
-```
-git clone https//github.com/tensorflow/model
-```
 
-Download required packages as specified in the repo.
-Converted the tutorial in the Jupyter notebook format to a regular Python file as I find it easier for me to work with.
-
-I had a problem in matplotlib's plot to actually display the generated images, so I added code to save images on the file system.
 
 ## Step 3. Create your own dataset for object detection.
 I used my iPhone and recorded a video of my dogs Aimee and Pink for about 4 minutes 40 seconds.  I exported jpeg images from the MOV file with 3 frames/second.  I got 839 jpeg images with the below command:
