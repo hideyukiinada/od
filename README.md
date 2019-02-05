@@ -128,7 +128,7 @@ Marking a location for each object means:
 
 At the end of this step, for each image file, you want to have a corresponding file that containing the coordinates of objects in the image.
 
-<img src='assets/images/labelimg_screenshot.png" width="1024px">
+<img src='assets/images/labelimg_screenshot.png' width='1024px'>
 
 Below is the actual file that was created for the image aimee_pink_00537.jpg.
 ```
