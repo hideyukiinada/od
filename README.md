@@ -65,39 +65,23 @@ At the end of the step,
 
 This photo is included in the source tree and licensed under [Apache License 2.0](https://github.com/tensorflow/models/blob/master/LICENSE)
 
+## Step 3. Create your own dataset for object detection
+There are four sub steps in this step:
 
-I started working on playing with object detection using TensorFlow's object detection API, so I'll use this page to record steps I have taken.  This is still work in progress and this note is for me so that I won't forget the steps I had to take.
+1. Get images
+2. Obtain a software product to mark location of your objects in each image
+3. Mark a location in each image
+4. Convert the image and location data into a file format that your ML software can process
 
-I believe the complete steps to re-train the model for your custom dataset seem to be:
-
-1. Download the the TensorFlow objection detection API code from their github repo.
-2. Verify that it works by generating the sample images with bounding box with their sample tutorial script.
-3. Create your own dataset for object detection.
-4. Mark bounding boxes.
-5. Download the pre-trained model to retrain (Download the checkpoint).
-6. Create a configuration file for setting parameters for training
-7. Train the model.
-8. Export the graph to be used for prediction.
-9. Run prediction.
-
-So far I've done through step 3.
-
-## Step 1. Git clone the the TensorFlow objection detection API code from their github repo.
-
-
-## Step 3. Create your own dataset for object detection.
+### Step 3.1. Get images
 I used my iPhone and recorded a video of my dogs Aimee and Pink for about 4 minutes 40 seconds.  I exported jpeg images from the MOV file with 3 frames/second.  I got 839 jpeg images with the below command:
 
 ```
 ffmpeg -i IMG_6204.MOV -vf fps=3 ../frames/aimee_pink_%05d.jpg
 ```
-
-## Step 4. Mark bounding boxes.
-This is a two step process.
-### Download and build labelimg
-https://github.com/tzutalin/labelImg has steps to install.
-It was referring to py2app which I haven't used, so I looked it up:
-https://pypi.org/project/py2app/
+### Step 3.2. Obtain a software product to mark location of your objects in each image
+I used a product called labelimg.
+[https://github.com/tzutalin/labelImg](https://github.com/tzutalin/labelImg) has detailed steps to install.
 
 I followed the steps the listed on the above page.  As I already had python & pip set up, I started with:
 ```
@@ -121,6 +105,9 @@ mv "dist/labelImg.app" /Applications
  
 Note: I already had lxml so pip install lxml did not install it.
 
+
+## Step 4. Mark bounding boxes.
+This is a two step process.
 
 ### Actually tag photos
 Using labelImg was straightforward, but it took a long time to go through.  I annotated 707 files with Pascal VOC format.  (I went through 749 images and some of the images did not have any dogs, and I also annotated 3 images with the text format by mistake.)
