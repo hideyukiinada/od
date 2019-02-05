@@ -25,6 +25,20 @@ I used TensorFlow Object Detection API, and I would like to go over step-by-step
 
 I'd also like to thank authors of articles I used as a reference.  They are listed at the bottom of this page.
 
+# What you need to actually go through the steps yourself
+## Software
+* TensorFlow
+* Python
+* PIP
+* Software to mark the location of object (e.g. labelImg)
+
+## Hardware
+* Hardware to run training & prediction
+If you run training locally, I strongly recommend a machine with a GPU.  I believe that you can run training in Google's cloud but I haven't tried that myself.
+
+## Skills
+* Python programming skill
+
 # Steps
 ## Step 1. Obtain the machine learning software
 ### 1.1. Set up TensorFlow
