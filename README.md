@@ -183,7 +183,7 @@ In this step, you need to combine all of them into a single TFRecord format that
 
 I made a copy of models/research/object_detection/create_pascal_tf_record.py and modified it so that it reads from my image and annotation directories.
 
-At the end, I was able to create a file called dog.tfrecords.  If you follow this step, please make sure that the generated .tfrecords file is not very small.  I tweaked directory names and resulted in a very small tfrecords file, which wasn't right.
+At the end, I was able to create a single file called dog.tfrecords.  If you follow this step, please make sure that the generated .tfrecords file is not very small.  I tweaked directory names and resulted in a very small tfrecords file, which wasn't right.
 
 ## Step 7. Train the model.
 
