@@ -83,8 +83,15 @@ I downloaded faster_rcnn_resnet50_coco model.
 Corresponding config file was already in the source tree.
 samples/configs/faster_rcnn_resnet50_coco_config
 
+num_classes: 3
+fine_tune_check_point: path where the downloaded model was copied
+tf_record_input_reader | "input_path: " : path to the tf records file that I have created.
+label_map_path: path to the label_map file that I have created
+ 
 I wasn't able to locate train.py at the object_detection directory where others listed in their articles.
 I did a search on the internet and found out that the script was moved to the directory called legacy.
+
+I tweaked the train.py to do the following:
 
 # References
 [1] Priyanka Kochhar, Building a Toy Detector with Tensorflow Object Detection API, https://www.kdnuggets.com/2018/02/building-toy-detector-tensorflow-object-detection-api.html
