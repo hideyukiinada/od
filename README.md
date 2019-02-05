@@ -103,7 +103,7 @@ If you want to classify objects that are accessible to you, I recommend using a 
 Also you may feel like you want to just hire someone else to delegate this laborial task of annotating images, but I recommend at least you go through some yourself to come up with a guideline before you ask someone else to do it.
 
 In my case, criteria I had to establish a guideline for my own are:
-* Handling of images where a dog is partially seen
+* Handling of images in which a dog is only partially seen
 * Handling of images in which a dog is blocked by another dog or another object
 * Handling of hair
 
@@ -202,13 +202,25 @@ You can train a model from scratch, but it takes a long time.  Instead, you can 
 https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md has the list of pre-trained model.
 I downloaded faster_rcnn_resnet50_coco model as I have experience with using ResNet50 and am happy with its performance in my image classification project.  There are many other models available and you can pick the one that best fits your need.  
 
-Corresponding config file was already in the source tree.
-samples/configs/faster_rcnn_resnet50_coco_config
+### Step 5. Train the model with your dataset
+In addition to the dataset in TFRecords format that you created in step ??? and the pre-trained model that you downloaded in step ???, you need the following items to train the model:
 
-num_classes: 3
-fine_tune_check_point: path where the downloaded model was copied
-tf_record_input_reader | "input_path: " : path to the tf records file that I have created.
-label_map_path: path to the label_map file that I have created
+* Configuration file to set parameters for training
+* Training script
+* Label map file
+
+Corresponding config file that matches the downloded pre-trained model should be already in the samples/configs directory of the source tree.
+In my case, I used:
+models/research/object_detection/samples/configs/faster_rcnn_resnet50_coco_config
+
+I tweaked the following parameters:
+
+| Parameter | Value |
+|---|---|
+| num_classes | 3 | 
+| fine_tune_check_point | <the path where the downloaded model was copied> | 
+| tf_record_input_reader input_path | < the path to the tf records file that I have created> |
+| label_map_path | <the path to the label_map file that I have created |
  
 I wasn't able to locate train.py at the object_detection directory where others listed in their articles.
 I did a search on the internet and found out that the script was moved to the directory called legacy.
@@ -221,8 +233,6 @@ The last step took 0.233 sec/step.
 
 I believe that you need to follow the instructions below page to export the model:
 https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/exporting_models.md
-
-Note I haven't done this process myself yet.
 
 # References
 &#91;1&#93; Priyanka Kochhar, Building a Toy Detector with Tensorflow Object Detection API, https://www.kdnuggets.com/2018/02/building-toy-detector-tensorflow-object-detection-api.html
