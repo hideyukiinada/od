@@ -1,6 +1,19 @@
 # (Work-in-Progress page.  Not ready for consumption!)
 Object Detection
 
+Object detection is used to automatically identify the position of objects in an image.
+This is a huge advance comparing with image classification which only provides the class of an object.
+If you use pre-trained model, it is really easy to do this, but you can only classify the location of objects the model was trained for. For example, the below photo shows images of puppies with my dog Aimee at a puppy social. Though all puppies were detected, they are all marked as a dog, and you don't know which one is Aimee.  For you to detect an object that was not in the model, then more steps are needed.
+
+Specifically logical steps are:
+1. Obtain the machine learning software
+2. Verify that object detection works with sample images
+3. Create your own dataset for object detection
+5. Download the pre-trained model to use as a base
+7. Train the model with your dataset
+8. Export the weights after the training
+9. Run prediction with the weights
+
 I started working on playing with object detection using TensorFlow's object detection API, so I'll use this page to record steps I have taken.  This is still work in progress and this note is for me so that I won't forget the steps I had to take.
 
 I believe the complete steps to re-train the model for your custom dataset seem to be:
