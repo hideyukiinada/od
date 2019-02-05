@@ -173,7 +173,7 @@ Below is the actual file (aimee_pink_00537.xml) that was created for the image a
 
 ```
 
-This format is called PASCAL VOC format.
+This format is called [PASCAL VOC](http://host.robots.ox.ac.uk/pascal/VOC/) format. (If you want to view a dataset tagged with this format, I found that you can download from the [GluonCV's website](https://gluon-cv.mxnet.io/build/examples_datasets/pascal_voc.html))
 
 Using labelImg was straightforward, but it took a long time to go through. labelImg has short cut keys and they helped a lot.  Out of 839 images that I had, I went through 749 images and some of the images did not have any dogs, and I also annotated 3 images with the text format by mistake. I annotated 707 files.
 
