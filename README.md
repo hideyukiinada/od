@@ -95,6 +95,18 @@ I used my iPhone and recorded a video of my dogs Aimee and Pink for about 4 minu
 ```
 ffmpeg -i IMG_6204.MOV -vf fps=3 ../frames/aimee_pink_%05d.jpg
 ```
+
+If you want to classify objects that are accessible to you, I recommend using a video instead of taking a photo or collecting images over the Internet because:
+1) It is much faster to capture a video with lots of images instead of taking separate photos
+2) You can capture way more diverse shapes of your objects especially if you are capturing images of animals.  For example, in most of the images contained in my video, my dogs are not a static picture card poses but in more dynamic yet realistsic positions.
+
+Also you may feel like you want to just hire someone else to delegate this laborial task of annotating images, but I recommend at least you go through some yourself to come up with a guideline before you ask someone else to do it.
+
+In my case, criteria I had to establish a guideline for my own are:
+* Handling of images where a dog is partially seen
+* Handling of images in which a dog is blocked by another dog or another object
+* Handling of hair
+
 ### Step 3.2. Obtain a software product to mark location of your objects in each image
 I used a product called labelImg.  [https://github.com/tzutalin/labelImg](https://github.com/tzutalin/labelImg) has detailed steps to install.  I set up labelImg on my Mac so these steps are for that.  I think steps for Linux will be slightly different.
 
