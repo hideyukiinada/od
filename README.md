@@ -75,6 +75,14 @@ At the end, I was able to create a file:
 dog.tfrecords
 
 ## Step 7. Train the model.
+
+### Downloading the pre-trained model
+https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md has the list of pre-trained model.
+I downloaded faster_rcnn_resnet50_coco model.
+
+Corresponding config file was already in the source tree.
+samples/configs/faster_rcnn_resnet50_coco_config
+
 I wasn't able to locate train.py at the object_detection directory where others listed in their articles.
 I did a search on the internet and found out that the script was moved to the directory called legacy.
 
