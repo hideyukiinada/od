@@ -185,11 +185,10 @@ I made a copy of models/research/object_detection/create_pascal_tf_record.py and
 
 At the end, I was able to create a single file called dog.tfrecords.  If you follow this step, please make sure that the generated .tfrecords file is not very small.  I tweaked directory names and resulted in a very small tfrecords file, which wasn't right.
 
-## Step 7. Train the model.
-
-### Downloading the pre-trained model
+## Step 4. Download the pre-trained model to use as a base
+You can train a model from scratch, but it takes a long time.  Instead, you can download a pre-trained model to shrink the time needed for training.
 https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md has the list of pre-trained model.
-I downloaded faster_rcnn_resnet50_coco model.
+I downloaded faster_rcnn_resnet50_coco model as I have experience with using ResNet50 and am happy with its performance in my image classification project.  There are many other models available and you can pick the one that best fits your need.  
 
 Corresponding config file was already in the source tree.
 samples/configs/faster_rcnn_resnet50_coco_config
