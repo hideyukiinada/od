@@ -114,12 +114,14 @@ Marking a location for each object means:
 
 At the end of this step, for each image file, you want to have a corresponding file that containing the coordinates of objects in the image.
 
-Below is the actual file that was created for the image aimee_pink_00298.jpg.
+<img src='assets/images/labelimg_screenshot.png" width="1024px">
+
+Below is the actual file that was created for the image aimee_pink_00537.jpg.
 ```
 <annotation>
         <folder>frames</folder>
-        <filename>aimee_pink_00298.jpg</filename>
-        <path>/Volumes/Toshiba/data/programs/ai/dataset/od_aimee_pink/frames/aimee_pink_00298.jpg</path>
+        <filename>aimee_pink_00537.jpg</filename>
+        <path>/Volumes/Toshiba/data/programs/ai/dataset/od_aimee_pink/frames/aimee_pink_00537.jpg</path>
         <source>
                 <database>Unknown</database>
         </source>
@@ -132,25 +134,25 @@ Below is the actual file that was created for the image aimee_pink_00298.jpg.
         <object>
                 <name>aimee</name>
                 <pose>Unspecified</pose>
-                <truncated>1</truncated>
+                <truncated>0</truncated>
                 <difficult>0</difficult>
                 <bndbox>
-                        <xmin>1165</xmin>
-                        <ymin>1</ymin>
-                        <xmax>1920</xmax>
-                        <ymax>826</ymax>
+                        <xmin>695</xmin>
+                        <ymin>239</ymin>
+                        <xmax>1049</xmax>
+                        <ymax>722</ymax>
                 </bndbox>
         </object>
         <object>
                 <name>pink</name>
                 <pose>Unspecified</pose>
-                <truncated>1</truncated>
+                <truncated>0</truncated>
                 <difficult>0</difficult>
                 <bndbox>
-                        <xmin>568</xmin>
-                        <ymin>1</ymin>
-                        <xmax>1095</xmax>
-                        <ymax>815</ymax>
+                        <xmin>1116</xmin>
+                        <ymin>129</ymin>
+                        <xmax>1624</xmax>
+                        <ymax>567</ymax>
                 </bndbox>
         </object>
 </annotation>
