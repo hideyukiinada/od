@@ -25,27 +25,37 @@ I used TensorFlow Object Detection API, and I would like to go over step-by-step
 
 I'd also like to thank authors of articles I used as a reference.  They are listed at the bottom of this page.
 
-# Step 1. Obtain the machine learning software
-## 1.1 Set up TensorFlow
+# Steps
+## Step 1. Obtain the machine learning software
+### 1.1 Set up TensorFlow
 You need TensorFlow on your machine.
 [This page on TensorFlow website](https://www.tensorflow.org/install/pip) has instructions.
 
-## 1.2 Download Object Detection API source code
+### 1.2 Download Object Detection API source code
 ```
 git clone https//github.com/tensorflow/model
 ```
 
-## 1.3 Navigate to the main directory
+### 1.3 Navigate to the main directory
 Once you check out the code, cd into the main directory:
 ```
 cd models/research/object_detection
 ```
 You can also have a look at [read me on Github](https://github.com/tensorflow/models/tree/master/research/object_detection).
 
-## 1.4 Convert the tutorial from Jupyter notebook to a regular Python file (Optional)
+## Step 2. Verify that object detection works with sample images
+### 2.1 Convert the tutorial from Jupyter notebook to a regular Python file (Optional)
 This step is optional if you like to work with Jupyter notebook instead of a regular Python script.
 
-Converted the tutorial in the Jupyter notebook format to a regular Python file as I find it easier for me to work with.
+In models/research/object_detection, you'll find a file called
+
+object_detection_tutorial.ipynb
+
+You want to convert this to a Python script by typing:
+
+```
+jupyter nbconvert --to script object_detection.ipynb
+```
 
 I had a problem in matplotlib's plot to actually display the generated images, so I added code to save images on the file system.
 
