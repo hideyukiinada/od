@@ -1,6 +1,7 @@
-# (Work-in-Progress page.  Not ready for consumption!)
-Object Detection
+# Using Custom Classes to Train and Predict with TensorFlow Object Detection API
+Hide Inada
 
+# Overview
 Object detection is used to automatically identify the position of objects in an image.
 This is a huge advance comparing with image classification which only provides the class of an object.
 If you use pre-trained model, it is really easy to do this, but you can only classify the location of objects the model was trained for. For example, the below photo shows images of puppies with my dog Aimee at a puppy social. Though all puppies were detected, they are all marked as a dog, and you don't know which one is Aimee.  For you to detect an object that was not in the model, then more steps are needed.
