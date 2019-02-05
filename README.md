@@ -177,12 +177,13 @@ This format is called [PASCAL VOC](http://host.robots.ox.ac.uk/pascal/VOC/) form
 
 Using labelImg was straightforward, but it took a long time to go through. labelImg has short cut keys and they helped a lot.  Out of 839 images that I had, I went through 749 images and some of the images did not have any dogs, and I also annotated 3 images with the text format by mistake. I annotated 707 files.
 
-### Converting images to TF Records
-I used which was included in the source code and tweaked:
-https://github.com/tensorflow/models/blob/master/research/object_detection/dataset_tools/create_pet_tf_record.py
+### Step 3.4. Convert the image and location data into a file format that your ML software can process
+Now you have a set of JPEG images and corresponding XML files in the annotation directory.
+In this step, you need to combine all of them into a single TFRecord format that the training script needs.
 
-At the end, I was able to create a file:
-dog.tfrecords
+I made a copy of models/research/object_detection/create_pascal_tf_record.py and modified it so that it reads from my image and annotation directories.
+
+At the end, I was able to create a file called dog.tfrecords.  If you follow this step, please make sure that the generated .tfrecords file is not very small.  I tweaked directory names and resulted in a very small tfrecords file, which wasn't right.
 
 ## Step 7. Train the model.
 
