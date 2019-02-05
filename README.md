@@ -21,7 +21,7 @@ Here are the logical steps:
 No matter what ML software you use, I believe that these steps are the same or similar.
 Using these steps, I was able to train the model with my own dataset and used the model for predicting positions of my dogs.
 
-I used TensorFlow Object Detection API, and I would like to go over step-by-step how I did it.
+I used TensorFlow Object Detection API, and I would like to go over step-by-step how I did it.  You do _not_ need to know about machine learning to follow this tutorial, but need to know Python to make modifications to scripts.
 
 I'd also like to thank authors of articles I used as a reference.  They are listed at the bottom of this page.
 
