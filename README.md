@@ -57,7 +57,14 @@ You want to convert this to a Python script by typing:
 jupyter nbconvert --to script object_detection.ipynb
 ```
 
-I had a problem in matplotlib's plot to actually display the generated images, so I added code to save images on the file system.
+At the end of the script, it contains the code to display a sample image using matplotlib, but I had a problem in matplotlib on my box, so I added code to save images on the file system using the PIL package.
+
+At the end of the step, 
+
+??? Add photo here.
+
+This photo is included in the source tree and licensed under [Apache License 2.0](https://github.com/tensorflow/models/blob/master/LICENSE)
+
 
 I started working on playing with object detection using TensorFlow's object detection API, so I'll use this page to record steps I have taken.  This is still work in progress and this note is for me so that I won't forget the steps I had to take.
 
