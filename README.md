@@ -126,11 +126,11 @@ Marking a location for each object means:
 * Identify an object in each image
 * Marking a bounding box for each object.
 
-At the end of this step, for each image file, you want to have a corresponding file that containing the coordinates of objects in the image.
+At the end of this step, for each image file, you want to have a corresponding XML file that containing the coordinates of objects in the image.
 
-<img src='assets/images/labelimg_screenshot.png' width='1024px'>
+<img src='assets/images/labelimg_screenshot.png' width='800px'>
 
-Below is the actual file that was created for the image aimee_pink_00537.jpg.
+Below is the actual file (aimee_pink_00537.xml) that was created for the image aimee_pink_00537.jpg.
 ```
 <annotation>
         <folder>frames</folder>
@@ -173,8 +173,9 @@ Below is the actual file that was created for the image aimee_pink_00537.jpg.
 
 ```
 
+This format is called PASCAL VOC format.
 
-Using labelImg was straightforward, but it took a long time to go through.  I annotated 707 files with Pascal VOC format.  (I went through 749 images and some of the images did not have any dogs, and I also annotated 3 images with the text format by mistake.)
+Using labelImg was straightforward, but it took a long time to go through. labelImg has short cut keys and they helped a lot.  Out of 839 images that I had, I went through 749 images and some of the images did not have any dogs, and I also annotated 3 images with the text format by mistake. I annotated 707 files.
 
 ### Converting images to TF Records
 I used which was included in the source code and tweaked:
