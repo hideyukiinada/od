@@ -1,4 +1,4 @@
-# Recipe for a Magic: Using Custom Classes to Train and Predict with TensorFlow Object Detection API
+# Using Custom Classes to Train and Predict with TensorFlow Object Detection API
 Hide Inada
 
 # Overview
@@ -38,6 +38,7 @@ If you run training locally, I strongly recommend a machine with a GPU.  I belie
 
 ## Skills
 * Python programming skill
+For going through this tutorial, the knowledge for TensorFlow programming is not needed.
 
 # Steps
 ## Step 1. Obtain the machine learning software
@@ -209,27 +210,144 @@ In addition to the dataset in TFRecords format that you created in step ??? and 
 * Training script
 * Label map file
 
+### Step 5.1. Configuration file
+
 Corresponding config file that matches the downloded pre-trained model should be already in the samples/configs directory of the source tree.
 In my case, I used:
 models/research/object_detection/samples/configs/faster_rcnn_resnet50_coco_config
 
 I tweaked the following parameters:
 
-| Parameter | Value |
-|---|---|
-| num_classes | 3 | 
-| fine_tune_check_point | <the path where the downloaded model was copied> | 
-| tf_record_input_reader input_path | < the path to the tf records file that I have created> |
-| label_map_path | <the path to the label_map file that I have created |
- 
+| Parameter | Value | Example |
+|---|---|---|
+| num_classes | Number of classes that your dataset has | 3 | 
+| fine_tune_check_point | <path where the downloaded model was copied and the prefix of the prefix> | /home/hinada/downloaded_model/model.ckpt |
+| tf_record_input_reader input_path | < path to the tf records file> | /home/hinada/data/dog.tfrecords |
+| tf_record_input_reader label_map_path | <path to the label_map file that I have created | /home/hinada/data/dog_label_map.pbtxt |
+| eval_input_reader input_path | <path to the tf records file> | /home/hinada/data/dog.tfrecords |
+| eval_input_reader label_map_path | <path to the label_map file that I have created | /home/hinada/data/dog_label_map.pbtxt |
+    
+There are two issues to note:
+First, regarding the 'fine_tune_check_point' parameter, if you download the pre-trained model and place it in a directory (e.g. /home/hinada/downloaded_model), if you type ls, you should see:
+```
+checkpoint  frozen_inference_graph.pb  model.ckpt.data-00000-of-00001  model.ckpt.index  model.ckpt.meta  pipeline.config  saved_model
+```
+I specified the full path of the directory plus "model.ckpt".
+
+Second, regarding eval_input_reader settings, I started tweaking the configuration file after I created the TFRecord dataset, so I didn't know that there is are parameters for the validation set.  I just specified the training set, but if you want to check the validation number, you might want to create a separate validation dataset in TFRecord and specify here.
+       
+### Step 5.2. Training script
 I wasn't able to locate train.py at the object_detection directory where others listed in their articles.
 I did a search on the internet and found out that the script was moved to the directory called legacy.
 
-I tweaked the train.py to do the following:
-??? (to be updated)
+I duplicated train.py and renamed the copy to train_dog.py and made the following changes:
 
-I stopped training at 30956 step with loss = 0.0803
-The last step took 0.233 sec/step.
+1 Added Python Path
+```
+import sys
+sys.path.append("../..")
+sys.path.append("<A directory that I cloned the repo>"/models/research/slim")
+```
+
+2. Put a directory where I want to save the checkpoint as the default for the train_dir
+```
+flags.DEFINE_string('train_dir', '/tmp/od/checkpoint_and_summaries',
+```
+
+3. Specify the config directory
+```
+flags.DEFINE_string('pipeline_config_path', '../samples/configs/faster_rcnn_resnet50_coco.config',
+```
+
+### Step 5.3. Label map file       
+You need the file to create a human-readable label to an integer.
+Under the objection_detection/data directory, there are many examples that you can use as a base.
+In my case, I created a file called dog_label_map.pbtxt which contains below:
+
+```
+item {
+  id: 1
+  name: 'aimee'
+}
+
+item {
+  id: 2
+  name: 'pink'
+}
+
+item {
+  id: 3
+  name: 'olivia'
+}
+```
+
+### Step 5.4. Running the training script
+Once you are done with all the changes, you can just run the training script.
+I trained the model for a few hours and stopped training at 30956 step with loss = 0.0803
+During the training, you might want to make sure that check point files are created in the dirctory you specified in your
+training script.
+
+## Step 6. Convert the model to be used for prediction
+Once you are done with training, you need to convert the model to a form that the prediction script can process:
+You'll use a script included in a source tree. I made a copy of object_detection/export_inference_graph.py and saved the copy as export_inference_graph_dog.py.
+
+Changes that I made are very similar to the training script.
+
+
+1. Added Python Paths to some directories
+```
+import sys
+sys.path.append("..")
+sys.path.append("/home/puppy/data/programs/3rdparty/tensorflow_model/models/research/slim")
+```
+
+2. Defined the config file location
+```
+flags.DEFINE_string('pipeline_config_path', 'samples/configs/faster_rcnn_resnet50_coco.config',
+```
+
+3. Specified the latest checkpoint file
+```
+flags.DEFINE_string('trained_checkpoint_prefix', '/tmp/od/checkpoint_and_summaries/model.ckpt-29463',
+```
+
+This one needs a little explanation:
+if you type ls in a directory where you saved your checkpoint files, you'll see something like:
+```
+checkpoint                               model.ckpt-22086.index                model.ckpt-27001.meta
+events.out.tfevents.1549336476.puppylin  model.ckpt-22086.meta                 model.ckpt-29463.data-00000-of-00001
+graph.pbtxt                              model.ckpt-24544.data-00000-of-00001  model.ckpt-29463.index
+model.ckpt-19627.data-00000-of-00001     model.ckpt-24544.index                model.ckpt-29463.meta
+model.ckpt-19627.index                   model.ckpt-24544.meta                 pipeline.config
+model.ckpt-19627.meta                    model.ckpt-27001.data-00000-of-00001
+model.ckpt-22086.data-00000-of-00001     model.ckpt-27001.index
+```
+In my case, model.ckpt-29463 is the prefix for the latest checkpoint file, so I specified the path to this directory
+as well as this prefix.
+
+4. Specified the output model file
+```
+flags.DEFINE_string('output_directory', '/tmp/od/exported_model', 'Path to write outputs.')
+```
+
+## Step 7. Run prediction with the model
+I made a copy of the tutorial script which I converted from the Jupyter notebook in step ???.
+I saved it as object_detection_dog.py.
+
+Changes are the following:
+1. I changed MODEL_NAME from 'ssd_mobilenet_v1_coco_2017_11_17' to a directory that I specified in the previous step (e.g. '/tmp/od/exported_model')
+
+In the original code you'll see the following,
+```
+PATH_TO_FROZEN_GRAPH = MODEL_NAME + '/frozen_inference_graph.pb'
+```
+
+By redefining MODEL_NAME, you are instructing the prediction script to read the model that you have exported.
+
+
+2. Got rid of the code to download the model.
+3. Set PATH_TO_LABELS to the full path of my label map file.
+4. Added code to read a test image one at a time, predict and save.
 
 I believe that you need to follow the instructions below page to export the model:
 https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/exporting_models.md
