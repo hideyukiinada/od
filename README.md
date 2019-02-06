@@ -75,14 +75,14 @@ object_detection_tutorial.ipynb
 You want to convert this to a Python script by typing:
 
 ```
-jupyter nbconvert --to script object_detection.ipynb
+jupyter nbconvert --to script object_detection_tutorial.ipynb
 ```
 
-This produces a script called object_detection.py in the current directory.
+This produces a script called object_detection_tutorial.py in the current directory.
 
 At the end of the script, it contains the code to display a sample image using matplotlib, but I had a problem in matplotlib on my box, so I added code to save images on the file system using the PIL package.
 
-At the end of the step, you should be able to see the photos below:
+Once you run the script, you should see the photos below:
 
 <img src='assets/images/sample_0.jpg' width='400px'>
 <img src='assets/images/sample_1.jpg' width='400px'>
@@ -90,19 +90,20 @@ At the end of the step, you should be able to see the photos below:
 These images are included in the source tree and licensed under [Apache License 2.0](https://github.com/tensorflow/models/blob/master/LICENSE)
 
 ## Step 3. Create your own dataset for object detection
-There are four sub steps in this step:
+There are four sub-steps in this step:
 
-1. Get images
+1. Obtain images with objects that you want to detect
 2. Obtain a software product to mark location of your objects in each image
 3. Mark a location in each image
 4. Convert the image and location data into a file format that your ML software can process
 
-### Step 3.1. Get images
+### Step 3.1. Obtain images with objects that you want to detect
 I used my iPhone and recorded a video of my dogs Aimee and Pink for about 4 minutes 40 seconds.  I exported jpeg images from the MOV file with 3 frames/second.  I got 839 jpeg images with the below command:
 
 ```
 ffmpeg -i IMG_6204.MOV -vf fps=3 ../frames/aimee_pink_%05d.jpg
 ```
+Each JPEG file was 1920x1080 with 3 channels.
 
 If you want to classify objects that are accessible to you, I recommend using a video instead of taking a photo or collecting images over the Internet because:
 1) It is much faster to capture a video with lots of images instead of taking separate photos
