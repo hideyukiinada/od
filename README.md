@@ -237,40 +237,41 @@ I tweaked the following parameters:
 | Parameter | Value | Example |
 |---|---|---|
 | num_classes | Number of classes that your dataset has | 3 | 
-| fine_tune_check_point | Path where the downloaded model was copied and the prefix of the prefix | /home/hinada/downloaded_model/model.ckpt |
-| tf_record_input_reader input_path | Path to the tf records file> | /home/hinada/data/dog.tfrecords |
+| fine_tune_check_point | Path where the downloaded model was copied and the prefix of the checkpoint | /home/hinada/downloaded_model/model.ckpt |
+| tf_record_input_reader input_path | Path to the tf records file | /home/hinada/data/dog.tfrecords |
 | tf_record_input_reader label_map_path | Path to the label_map file that I have created | /home/hinada/data/dog_label_map.pbtxt |
-| eval_input_reader input_path | Path to the tf records file> | /home/hinada/data/dog.tfrecords |
+| eval_input_reader input_path | Path to the tf records file | /home/hinada/data/dog.tfrecords |
 | eval_input_reader label_map_path | Path to the label_map file that I have created | /home/hinada/data/dog_label_map.pbtxt |
     
-There are two issues to note:
+There are two issues to note here.
+
 First, regarding the 'fine_tune_check_point' parameter, if you download the pre-trained model and place it in a directory (e.g. /home/hinada/downloaded_model), if you type ls, you should see:
 ```
 checkpoint  frozen_inference_graph.pb  model.ckpt.data-00000-of-00001  model.ckpt.index  model.ckpt.meta  pipeline.config  saved_model
 ```
 I specified the full path of the directory plus "model.ckpt".
 
-Second, regarding eval_input_reader settings, I started tweaking the configuration file after I created the TFRecord dataset, so I didn't know that there is are parameters for the validation set.  I just specified the training set, but if you want to check the validation number, you might want to create a separate validation dataset in TFRecord and specify here.
+Second, regarding eval_input_reader settings, I started tweaking the configuration file after I created the TFRecord dataset, so I didn't know that there are parameters for the validation set in a configuration file.  I just specified the training set for validation, but if you want to check the validation accuracy during training, you might want to create a separate validation dataset in TFRecord and specify it here.
        
 ### Step 5.2. Training script
-I wasn't able to locate train.py at the object_detection directory where others listed in their articles.
-I did a search on the internet and found out that the script was moved to the directory called legacy.
+Initially I wasn't able to locate train.py at the object_detection directory where others listed in their articles.
+I did a search on the internet and found out that the script was moved to the directory called _legacy_ under object_detection.
 
-I duplicated train.py and renamed the copy to train_dog.py and made the following changes:
+I duplicated train.py and renamed the copy to train_dog.py and made the following changes (there are ways to do these without modifying the code, and I'm listing my changes for an illustration purpose for the value of each flag):
 
-1 Added Python Path
+1. I added additional Python Paths.
 ```
 import sys
 sys.path.append("../..")
 sys.path.append("<A directory that I cloned the repo>"/models/research/slim")
 ```
 
-2. Put a directory where I want to save the checkpoint as the default for the train_dir
+2. I put a directory where I want to save the checkpoint as the default for the train_dir flag.
 ```
 flags.DEFINE_string('train_dir', '/tmp/od/checkpoint_and_summaries',
 ```
 
-3. Specify the config directory
+3. I specified the config directory.
 ```
 flags.DEFINE_string('pipeline_config_path', '../samples/configs/faster_rcnn_resnet50_coco.config',
 ```
@@ -299,7 +300,8 @@ item {
 
 ### Step 5.4. Running the training script
 Once you are done with all the changes, you can just run the training script.
-I trained the model for a few hours and stopped training at 30956 step with loss = 0.0803
+I trained the model for a few hours and stopped training at 30956 step with loss = 0.0803.
+
 During the training, you might want to make sure that check point files are created in the dirctory you specified in your
 training script.
 
