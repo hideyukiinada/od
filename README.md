@@ -129,7 +129,7 @@ I followed the steps the listed on the above page.  As I already had Python & pi
 pip install py2app
 pip install PyQt5
 ```
-After installing PyQt5, I typed the below command to verify that PyQt5 resource compiler was successfully installed.
+After installing PyQt5, I typed the below command to verify that PyQt5 resource compiler was successfully installed as mentioned in [a Stack Overflow article](https://stackoverflow.com/questions/46986431/make-no-rule-to-make-target-qt5py3-stop).
 ```
 pyrcc5
 ```  
