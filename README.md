@@ -98,7 +98,7 @@ There are four sub-steps in this step:
 4. Convert the image and location data into a file format that your ML software can process
 
 ### Step 3.1. Obtain images with objects that you want to detect
-I used my iPhone and recorded a video of my dogs Aimee and Pink for about 4 minutes 40 seconds.  I exported jpeg images from the MOV file with 3 frames/second.  I got 839 jpeg images with the below command:
+I used my iPhone and recorded a video of my dogs Aimée and Pink for about 4 minutes 40 seconds.  I exported jpeg images from the MOV file with 3 frames/second.  I got 839 jpeg images with the below command:
 
 ```
 ffmpeg -i IMG_6204.MOV -vf fps=3 ../frames/aimee_pink_%05d.jpg
@@ -121,7 +121,7 @@ Criteria I had to establish for my own are:
 I am sure that any annotation will have a need for defining its own criteria.
 
 ### Step 3.2. Obtain a software product to mark location of your objects in each image
-I used a product called labelImg.  [https://github.com/tzutalin/labelImg](https://github.com/tzutalin/labelImg) has detailed steps to install.  I set up labelImg on my Mac so these steps are for that.  I think steps for Linux will be slightly different.
+I used a product called labelImg.  [The developer's github page](https://github.com/tzutalin/labelImg) has detailed steps to install.  I set up labelImg on my Mac so these steps are for that.  I think steps for Linux will be slightly different.
 
 I followed the steps the listed on the above page.  As I already had python & pip set up, I started with:
 ```
