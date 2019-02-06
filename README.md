@@ -210,17 +210,17 @@ Using labelImg was straightforward, but it took a long time to go through. label
 Now you have a set of JPEG images and corresponding XML files in the annotation directory.
 In this step, you need to combine all of them into a single TFRecord file format that the training script needs.
 
-I made a copy of models/research/object_detection/create_pascal_tf_record.py and modified it so that it reads from my image and annotation directories.
+I made a copy of models/research/object_detection/create_pascal_tf_record.py and modified it so that it reads from my image and annotation directories.  I didn't make changes to make the code for a general purpose use, and my change were rather hacky, so I'd rather not post my changes in this article, but I don't think it will take much time for a Python programmer to get it work. If you are really stuck in this step, I may be able to help, so please PM me.
 
-At the end, I was able to create a single file called dog.tfrecords.  If you follow this step, please make sure that the generated .tfrecords file is not very small.  I tweaked directory names and resulted in a very small tfrecords file, which wasn't right.
+At the end, I was able to create a single file called dog.tfrecords.  Also, please make sure that the generated .tfrecords file is not very small.  I tweaked directory names and resulted in a very small tfrecords file, which wasn't right and I had to redo some steps to produce the correct .tfrecords file.
 
 ## Step 4. Download the pre-trained model to use as a base
 You can train a model from scratch, but it takes a long time.  Instead, you can download a pre-trained model to shrink the time needed for training.
 https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md has the list of pre-trained model.
-I downloaded faster_rcnn_resnet50_coco model as I have experience with using ResNet50 and am happy with its performance in my image classification project.  There are many other models available and you can pick the one that best fits your need.  
+I downloaded faster_rcnn_resnet50_coco model as I have experience with using ResNet50 and was happy with its performance in my image classification project.  There are many other models available and you can pick the one that best fits your need.  
 
-### Step 5. Train the model with your dataset
-In addition to the dataset in TFRecords format that you created in step ??? and the pre-trained model that you downloaded in step ???, you need the following items to train the model:
+## Step 5. Train the model with your dataset
+In addition to the dataset in TFRecords format that you created in step 3 and the pre-trained model that you downloaded in step 4, you need the following items to train the model:
 
 * Configuration file to set parameters for training
 * Training script
@@ -228,20 +228,20 @@ In addition to the dataset in TFRecords format that you created in step ??? and 
 
 ### Step 5.1. Configuration file
 
-Corresponding config file that matches the downloded pre-trained model should be already in the samples/configs directory of the source tree.
+You need a config file that matches the downloded pre-trained model.  A matching config file should be already in the samples/configs directory of the source tree.
 In my case, I used:
-models/research/object_detection/samples/configs/faster_rcnn_resnet50_coco_config
+models/research/object_detection/samples/configs/faster_rcnn_resnet50_coco.config
 
 I tweaked the following parameters:
 
 | Parameter | Value | Example |
 |---|---|---|
 | num_classes | Number of classes that your dataset has | 3 | 
-| fine_tune_check_point | <path where the downloaded model was copied and the prefix of the prefix> | /home/hinada/downloaded_model/model.ckpt |
-| tf_record_input_reader input_path | < path to the tf records file> | /home/hinada/data/dog.tfrecords |
-| tf_record_input_reader label_map_path | <path to the label_map file that I have created | /home/hinada/data/dog_label_map.pbtxt |
-| eval_input_reader input_path | <path to the tf records file> | /home/hinada/data/dog.tfrecords |
-| eval_input_reader label_map_path | <path to the label_map file that I have created | /home/hinada/data/dog_label_map.pbtxt |
+| fine_tune_check_point | Path where the downloaded model was copied and the prefix of the prefix | /home/hinada/downloaded_model/model.ckpt |
+| tf_record_input_reader input_path | Path to the tf records file> | /home/hinada/data/dog.tfrecords |
+| tf_record_input_reader label_map_path | Path to the label_map file that I have created | /home/hinada/data/dog_label_map.pbtxt |
+| eval_input_reader input_path | Path to the tf records file> | /home/hinada/data/dog.tfrecords |
+| eval_input_reader label_map_path | Path to the label_map file that I have created | /home/hinada/data/dog_label_map.pbtxt |
     
 There are two issues to note:
 First, regarding the 'fine_tune_check_point' parameter, if you download the pre-trained model and place it in a directory (e.g. /home/hinada/downloaded_model), if you type ls, you should see:
