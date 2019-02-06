@@ -42,6 +42,9 @@ If you run training locally, I strongly recommend a machine with a GPU.  I belie
 * Python programming skill
 For going through this tutorial, the knowledge for TensorFlow programming is not needed.
 
+## Expected time to take
+* 2 days (with annotating the photos taking the large chunk).
+
 # Steps
 ## Step 1. Obtain the machine learning software
 ### 1.1. Set up TensorFlow
