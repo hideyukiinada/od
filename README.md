@@ -3,7 +3,7 @@ February 5, 2019
 
 Hide Inada
 
-<IMG SRC="assets/images/od_test00038_cropped.jpg>
+<IMG SRC="assets/images/od_test00038_cropped.jpg">
 
 # Overview
 Object detection is used to automatically identify the position of objects in an image.
