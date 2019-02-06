@@ -3,7 +3,7 @@ Hide Inada
 
 # Overview
 Object detection is used to automatically identify the position of objects in an image.
-This is a huge advance comparing with image classification which only provides the class of an object.
+This is huge improvement comparing with image classification which only provides the class of an object.
 For example, [my image classification app](https://github.com/hideyukiinada/ic) can predict 1000 classes, but does not return the location of each object.
 Is it difficult to set up and use a machine learning system to detect an object?  Not really.  If you use a pre-trained model, it is easy to do so.  However you can only classify the location of objects the model was trained for. For example, the below photo shows images of puppies with my dog Aimee at a puppy social that I processed with YOLO without using my own dataset. Though all puppies were detected, they are all marked as a dog, and you don't know which one is Aimée.  
 
