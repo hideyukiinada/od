@@ -38,6 +38,7 @@ If you run training locally, I strongly recommend a machine with a GPU.  I belie
 
 ## Skills
 * Python programming skill
+For going through this tutorial, the knowledge for TensorFlow programming is not needed.
 
 # Steps
 ## Step 1. Obtain the machine learning software
@@ -280,10 +281,58 @@ item {
 }
 ```
 
-## Step 6. Training
+### Step 5.4. Running the training script
+Once you are done with all the changes, you can just run the training script.
+I trained the model for a few hours and stopped training at 30956 step with loss = 0.0803
+During the training, you might want to make sure that check point files are created in the dirctory you specified in your
+training script.
 
-I stopped training at 30956 step with loss = 0.0803
-The last step took 0.233 sec/step.
+## Step 6. Convert the model to be used for prediction
+Once you are done with training, you need to convert the model to a form that the prediction script can process:
+You'll use a script included in a source tree. I made a copy of object_detection/export_inference_graph.py and saved the copy as export_inference_graph_dog.py.
+
+Changes that I made are very similar to the training script.
+
+
+1. Added Python Paths to some directories
+```
+import sys
+sys.path.append("..")
+sys.path.append("/home/puppy/data/programs/3rdparty/tensorflow_model/models/research/slim")
+```
+
+2. Defined the config file location
+```
+flags.DEFINE_string('pipeline_config_path', 'samples/configs/faster_rcnn_resnet50_coco.config',
+```
+
+3. Specified the latest checkpoint file
+```
+flags.DEFINE_string('trained_checkpoint_prefix', '/tmp/od/checkpoint_and_summaries/model.ckpt-29463',
+```
+
+This one needs a little explanation:
+if you type ls in a directory where you saved your checkpoint files, you'll see something like:
+```
+checkpoint                               model.ckpt-22086.index                model.ckpt-27001.meta
+events.out.tfevents.1549336476.puppylin  model.ckpt-22086.meta                 model.ckpt-29463.data-00000-of-00001
+graph.pbtxt                              model.ckpt-24544.data-00000-of-00001  model.ckpt-29463.index
+model.ckpt-19627.data-00000-of-00001     model.ckpt-24544.index                model.ckpt-29463.meta
+model.ckpt-19627.index                   model.ckpt-24544.meta                 pipeline.config
+model.ckpt-19627.meta                    model.ckpt-27001.data-00000-of-00001
+model.ckpt-22086.data-00000-of-00001     model.ckpt-27001.index
+```
+In my case, model.ckpt-29463 is the prefix for the latest checkpoint file, so I specified the path to this directory
+as well as this prefix.
+
+4. Specified the output model file
+```
+flags.DEFINE_string('output_directory', '/tmp/od/exported_model', 'Path to write outputs.')
+```
+
+7. Run prediction with the model
+
+
 
 I believe that you need to follow the instructions below page to export the model:
 https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/exporting_models.md
