@@ -44,7 +44,7 @@ If you run training locally, I strongly recommend a machine with a GPU.  I belie
 For going through this tutorial to reproduce my result, neigher knowledge for TensorFlow programming nor familiarity with machine learning is needed.
 
 ## Expected time to take
-* 2 days (with annotating the photos taking the large chunk).
+* 2 days (with annotating the photos taking the largest chunk).
 
 # Steps
 ## Step 1. Obtain the machine learning software
