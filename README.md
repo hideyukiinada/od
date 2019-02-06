@@ -40,7 +40,8 @@ If you run training locally, I strongly recommend a machine with a GPU.  I belie
 
 ## Skills
 * Python programming skill
-For going through this tutorial, the knowledge for TensorFlow programming is not needed.
+
+For going through this tutorial, neigher knowledge for TensorFlow programming nor familiarity with machine learning is  needed.
 
 ## Expected time to take
 * 2 days (with annotating the photos taking the large chunk).
