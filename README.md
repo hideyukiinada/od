@@ -330,9 +330,24 @@ as well as this prefix.
 flags.DEFINE_string('output_directory', '/tmp/od/exported_model', 'Path to write outputs.')
 ```
 
-7. Run prediction with the model
+## Step 7. Run prediction with the model
+I made a copy of the tutorial script which I converted from the Jupyter notebook in step ???.
+I saved it as object_detection_dog.py.
+
+Changes are the following:
+1. I changed MODEL_NAME from 'ssd_mobilenet_v1_coco_2017_11_17' to a directory that I specified in the previous step (e.g. '/tmp/od/exported_model')
+
+In the original code you'll see the following,
+```
+PATH_TO_FROZEN_GRAPH = MODEL_NAME + '/frozen_inference_graph.pb'
+```
+
+By redefining MODEL_NAME, you are instructing the prediction script to read the model that you have exported.
 
 
+2. Got rid of the code to download the model.
+3. Set PATH_TO_LABELS to the full path of my label map file.
+4. Added code to read a test image one at a time, predict and save.
 
 I believe that you need to follow the instructions below page to export the model:
 https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/exporting_models.md
