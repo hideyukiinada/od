@@ -31,8 +31,8 @@ I would also like to thank authors of articles I used as a reference.  They are 
 ## Software
 * TensorFlow
 * Python
-* PIP
-* Software to mark the location of object (e.g. labelImg)
+* Python pip
+* Software to mark (annotate) the location of object (e.g. labelImg)
 
 ## Hardware
 * Hardware to run training & prediction
@@ -121,9 +121,9 @@ Criteria I had to establish for my own are:
 I am sure that any annotation will have a need for defining its own criteria.
 
 ### Step 3.2. Obtain a software product to mark location of your objects in each image
-I used a product called labelImg.  [The developer's github page](https://github.com/tzutalin/labelImg) has detailed steps to install.  I set up labelImg on my Mac so these steps are for that.  I think steps for Linux will be slightly different.
+I used a product called labelImg.  [The developer's github page](https://github.com/tzutalin/labelImg) has detailed steps to install and use the software.  I set up labelImg on my Mac so these steps are for that.  I think steps for Linux should be slightly different as /Applications directory is specific to Mac.
 
-I followed the steps the listed on the above page.  As I already had python & pip set up, I started with:
+I followed the steps the listed on the above page.  As I already had Python & pip set up, I started with:
 ```
 pip install py2app
 pip install PyQt5
