@@ -259,19 +259,19 @@ I did a search on the internet and found out that the script was moved to the di
 
 I duplicated train.py and renamed the copy to train_dog.py and made the following changes (there are ways to do these without modifying the code, and I'm listing my changes for an illustration purpose for the value of each flag):
 
-1. I added additional Python Paths.
+1. Added additional Python Paths.
 ```
 import sys
 sys.path.append("../..")
 sys.path.append("<A directory that I cloned the repo>"/models/research/slim")
 ```
 
-2. I put a directory where I want to save the checkpoint as the default for the train_dir flag.
+2. Put a directory where I want to save the checkpoint as the default for the train_dir flag.
 ```
 flags.DEFINE_string('train_dir', '/tmp/od/checkpoint_and_summaries',
 ```
 
-3. I specified the config directory.
+3. Specified the config directory.
 ```
 flags.DEFINE_string('pipeline_config_path', '../samples/configs/faster_rcnn_resnet50_coco.config',
 ```
@@ -312,21 +312,21 @@ You'll be using a script included in a source tree. I made a copy of object_dete
 
 You can also refer to [exporting_models.md](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/exporting_models.md) in the source tree for more details.
 
-Changes that I made are very similar to the training script.
+Changes that I made are very similar to the training script:
 
-1. I added additional Python Paths:
+1. Added additional Python Paths:
 ```
 import sys
 sys.path.append("..")
 sys.path.append("/home/puppy/data/programs/3rdparty/tensorflow_model/models/research/slim")
 ```
 
-2. I defined the config file location:
+2. Defined the config file location:
 ```
 flags.DEFINE_string('pipeline_config_path', 'samples/configs/faster_rcnn_resnet50_coco.config',
 ```
 
-3. I specified the latest checkpoint file:
+3. Specified the latest checkpoint file:
 ```
 flags.DEFINE_string('trained_checkpoint_prefix', '/tmp/od/checkpoint_and_summaries/model.ckpt-29463',
 ```
@@ -345,17 +345,17 @@ model.ckpt-22086.data-00000-of-00001     model.ckpt-27001.index
 In my case, model.ckpt-29463 is the prefix for the latest checkpoint file, so I specified the path to this directory
 as well as this prefix.
 
-4. I specified the output model file:
+4. Specified the output model file:
 ```
 flags.DEFINE_string('output_directory', '/tmp/od/exported_model', 'Path to write outputs.')
 ```
 
 ## Step 7. Run prediction with the model
-I made a copy of the tutorial script which I converted from the Jupyter notebook in step ???.
+I made a copy of the tutorial script which I converted from the Jupyter notebook in step 2.
 I saved it as object_detection_dog.py.
 
 Changes are the following:
-1. I changed MODEL_NAME from 'ssd_mobilenet_v1_coco_2017_11_17' to a directory that I specified in the previous step (e.g. '/tmp/od/exported_model')
+1. Changed MODEL_NAME from 'ssd_mobilenet_v1_coco_2017_11_17' to a directory that I specified in the previous step (e.g. '/tmp/od/exported_model')
 
 In the original code you'll see the following,
 ```
@@ -370,6 +370,8 @@ By redefining MODEL_NAME, you are instructing the prediction script to read the 
 4. Added code to read a test image one at a time, predict and save.
 
 If you want to process a video like I did, you can just reassemble the processed image using ffmpeg.
+
+That's it. Actual work besides annotating the dataset should take less than a day.
 
 # References
 &#91;1&#93; Priyanka Kochhar, Building a Toy Detector with Tensorflow Object Detection API, https://www.kdnuggets.com/2018/02/building-toy-detector-tensorflow-object-detection-api.html
