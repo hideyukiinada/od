@@ -314,19 +314,19 @@ You can also refer to [exporting_models.md](https://github.com/tensorflow/models
 
 Changes that I made are very similar to the training script.
 
-1. Added Python Paths to some directories
+1. I added additional Python Paths:
 ```
 import sys
 sys.path.append("..")
 sys.path.append("/home/puppy/data/programs/3rdparty/tensorflow_model/models/research/slim")
 ```
 
-2. Defined the config file location
+2. I defined the config file location:
 ```
 flags.DEFINE_string('pipeline_config_path', 'samples/configs/faster_rcnn_resnet50_coco.config',
 ```
 
-3. Specified the latest checkpoint file
+3. I specified the latest checkpoint file:
 ```
 flags.DEFINE_string('trained_checkpoint_prefix', '/tmp/od/checkpoint_and_summaries/model.ckpt-29463',
 ```
@@ -345,7 +345,7 @@ model.ckpt-22086.data-00000-of-00001     model.ckpt-27001.index
 In my case, model.ckpt-29463 is the prefix for the latest checkpoint file, so I specified the path to this directory
 as well as this prefix.
 
-4. Specified the output model file
+4. I specified the output model file:
 ```
 flags.DEFINE_string('output_directory', '/tmp/od/exported_model', 'Path to write outputs.')
 ```
