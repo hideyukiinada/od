@@ -7,6 +7,8 @@ This is a huge advance comparing with image classification which only provides t
 For example, [my image classification app](https://github.com/hideyukiinada/ic) can predict 1000 classes, but does not return the location of each object.
 Is it difficult to set up and use a machine learning system to detect an object?  Not really.  If you use a pre-trained model, it is easy to do so.  However you can only classify the location of objects the model was trained for. For example, the below photo shows images of puppies with my dog Aimee at a puppy social. Though all puppies were detected, they are all marked as a dog, and you don't know which one is Aimee.  
 
+<img src='assets/images/aimee_puppy_social.jpg' width='400px'>
+
 For you to detect an object that was not in the model, then more steps are needed.
 
 Here are the logical steps:
