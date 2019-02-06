@@ -259,24 +259,11 @@ Second, regarding eval_input_reader settings, I started tweaking the configurati
 Initially I wasn't able to locate train.py at the object_detection directory where others listed in their articles.
 I did a search on the internet and found out that the script was moved to the directory called _legacy_ under object_detection.
 
-I duplicated train.py and renamed the copy to train_dog.py and made the following changes (there are ways to do these without modifying the code, and I'm listing my changes for an illustration purpose for the value of each flag):
-
-1. Added additional Python Paths.
-```
-import sys
-sys.path.append("../..")
-sys.path.append("<A directory that I cloned the repo>"/models/research/slim")
-```
-
-2. Put a directory where I want to save the checkpoint as the default for the train_dir flag.
-```
-flags.DEFINE_string('train_dir', '/tmp/od/checkpoint_and_summaries',
-```
-
-3. Specified the config directory.
-```
-flags.DEFINE_string('pipeline_config_path', '../samples/configs/faster_rcnn_resnet50_coco.config',
-```
+I duplicated train.py and renamed the copy to train_dog.py.
+To make it work in my environment, I did the following:
+* Added additional Python Paths to include "../.." and "<A directory that I cloned the repo>"/models/research/slim")
+* Set the 'train_dir' flag to a directory where I want to store check point files (e.g. '/tmp/od/checkpoint_and_summaries')
+* Set 'pipeline_config_path' flag to the full path of the config file (e.g. '../samples/configs/faster_rcnn_resnet50_coco.config')
 
 ### Step 5.3. Label map file       
 You need the file to create a human-readable label to an integer.
@@ -314,24 +301,11 @@ You'll be using a script included in a source tree. I made a copy of object_dete
 
 You can also refer to [exporting_models.md](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/exporting_models.md) in the source tree for more details.
 
-Changes that I made are very similar to the training script:
-
-1. Added additional Python Paths:
-```
-import sys
-sys.path.append("..")
-sys.path.append("/home/puppy/data/programs/3rdparty/tensorflow_model/models/research/slim")
-```
-
-2. Defined the config file location:
-```
-flags.DEFINE_string('pipeline_config_path', 'samples/configs/faster_rcnn_resnet50_coco.config',
-```
-
-3. Specified the latest checkpoint file:
-```
-flags.DEFINE_string('trained_checkpoint_prefix', '/tmp/od/checkpoint_and_summaries/model.ckpt-29463',
-```
+The set up I did is very similar to what I did to run the training script:
+* Added additional Python Paths to include ".." and "<A directory that I cloned the repo>"/models/research/slim")
+* Set 'pipeline_config_path' flag to the full path of the config file (e.g. '../samples/configs/faster_rcnn_resnet50_coco.config')
+* Set the 'output_directory' flag to a directory to output the model (e.g. '/tmp/od/exported_model')
+* Set the latest checkpoint file in 'trained_checkpoint_prefix' flag to '/tmp/od/checkpoint_and_summaries/model.ckpt-29463'.
 
 This one needs a little explanation:
 if you type ls in a directory where you saved your checkpoint files, you'll see something like:
@@ -346,11 +320,6 @@ model.ckpt-22086.data-00000-of-00001     model.ckpt-27001.index
 ```
 In my case, model.ckpt-29463 is the prefix for the latest checkpoint file, so I specified the path to this directory
 as well as this prefix.
-
-4. Specified the output model file:
-```
-flags.DEFINE_string('output_directory', '/tmp/od/exported_model', 'Path to write outputs.')
-```
 
 ## Step 7. Run prediction with the model
 I made a copy of the tutorial script which I converted from the Jupyter notebook in step 2.
