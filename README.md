@@ -305,7 +305,7 @@ The set up I did is very similar to what I did to run the training script:
 * Added additional Python Paths to include ".." and "_&lt;the path where I cloned the repo&gt;_/models/research/slim"
 * Set 'pipeline_config_path' flag to the full path of the config file (e.g. '../samples/configs/faster_rcnn_resnet50_coco.config')
 * Set the 'output_directory' flag to a directory to output the model (e.g. '/tmp/od/exported_model')
-* Set the latest checkpoint file in 'trained_checkpoint_prefix' flag to '/tmp/od/checkpoint_and_summaries/model.ckpt-29463'.
+* Set the latest checkpoint file in 'trained_checkpoint_prefix' flag to '/tmp/od/checkpoint_and_summaries/model.ckpt-29463'
 
 This one needs a little explanation:
 if you type ls in a directory where you saved your checkpoint files, you'll see something like:
