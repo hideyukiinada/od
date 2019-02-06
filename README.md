@@ -302,7 +302,7 @@ You'll be using a script included in a source tree. I made a copy of object_dete
 You can also refer to [exporting_models.md](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/exporting_models.md) in the source tree for more details.
 
 The set up I did is very similar to what I did to run the training script:
-* Added additional Python Paths to include ".." and "<A directory that I cloned the repo>"/models/research/slim")
+* Added additional Python Paths to include ".." and "_&lt;the path where I cloned the repo&gt;_/models/research/slim"
 * Set 'pipeline_config_path' flag to the full path of the config file (e.g. '../samples/configs/faster_rcnn_resnet50_coco.config')
 * Set the 'output_directory' flag to a directory to output the model (e.g. '/tmp/od/exported_model')
 * Set the latest checkpoint file in 'trained_checkpoint_prefix' flag to '/tmp/od/checkpoint_and_summaries/model.ckpt-29463'.
