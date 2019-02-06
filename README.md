@@ -107,14 +107,16 @@ Each JPEG file was 1920x1080 with 3 channels.
 
 If you want to classify objects that are accessible to you, I recommend using a video instead of taking a photo or collecting images over the Internet because:
 1) It is much faster to capture a video with lots of images instead of taking separate photos
-2) You can capture way more diverse shapes of your objects especially if you are capturing images of animals.  For example, in most of the images contained in my video, my dogs are not a static picture card poses but in more dynamic yet realistsic positions.
+2) You can capture way more diverse shapes of your objects especially if you are capturing images of animals.  For example, in most of the images contained in my video, my dogs are not in picture-card-quality poses but in more dynamic yet realistsic positions.  As I mentioned in my article [Limitation of Neural Networks](https://www.linkedin.com/pulse/limitation-neural-networks-hideyuki-inada/), it's very important that you have images that are similar to what you want to predict.  Just having multiple photos of dogs sitting with their face in the center of a frame will result in failure to classify actual images.
 
-Also you may feel like you want to just hire someone else to delegate this laborial task of annotating images, but I recommend at least you go through some yourself to come up with a guideline before you ask someone else to do it.
+Also you may feel like you want to just hire someone else to delegate this laborial task of annotating images, but I recommend at least you go through images for a few hours yourself to come up with a guideline before you ask someone else to do it.
 
-In my case, criteria I had to establish a guideline for my own are:
-* Handling of images in which a dog is only partially seen
-* Handling of images in which a dog is blocked by another dog or another object
-* Handling of hair
+Criteria I had to establish for my own are:
+* How to handle images in which a dog is only partially seen
+* How to handle images in which a dog is blocked by another dog or another object
+* How to handle their hair in positioning a bounding box
+
+I am sure that any annotation will have a need for defining its own criteria.
 
 ### Step 3.2. Obtain a software product to mark location of your objects in each image
 I used a product called labelImg.  [https://github.com/tzutalin/labelImg](https://github.com/tzutalin/labelImg) has detailed steps to install.  I set up labelImg on my Mac so these steps are for that.  I think steps for Linux will be slightly different.
