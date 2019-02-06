@@ -26,7 +26,7 @@ Here are the high-level steps:
 No matter what ML software you use, I believe that these steps are the same or similar.
 Following these steps, I was able to train a model with my own dataset and used the model for predicting positions of my dogs.
 
-I used TensorFlow Object Detection API, and I would like to go over step-by-step how I did it.  You do _not_ need to know about machine learning to follow this tutorial, but need to know Python to make modifications to scripts.
+I used TensorFlow Object Detection API, and I would like to go over step-by-step how I did it.
 
 I would also like to thank authors of articles I used as a reference.  They are listed at the bottom of this page.  Without tips from people who have already done this, going through this exercise myself would have been much more difficult.
 
@@ -113,20 +113,18 @@ Each JPEG file was 1920x1080 with 3 channels.
 If you want to classify objects that are accessible to you, I recommend using a video instead of taking a photo or collecting images over the Internet because:
 1) It is much faster to capture a video with lots of images instead of taking separate photos
 2) You can capture way more diverse shapes of your objects especially if you are capturing images of animals.  
-    For example, in most of the images contained in my video, my dogs are not in picture-card-quality poses but in more dynamic yet realistsic positions.  As I mentioned in my article [Limitation of Neural Networks](https://www.linkedin.com/pulse/limitation-neural-networks-hideyuki-inada/), it's very important that you have images that are similar to what you want to predict.  Just having multiple photos of dogs sitting with their face in the center of a frame will result in failure to classify actual images.
-3) A photo contains way more pixels than a video file which is not needed for object detection adding overhead to process a high-resolution images
+    For example, in most of the images contained in my video, my dogs are not in picture-card-quality poses but in more dynamic and realistsic positions.  As I mentioned in my article [Limitation of Neural Networks](https://www.linkedin.com/pulse/limitation-neural-networks-hideyuki-inada/), it's very important that you have images that are similar to what you want to predict.  Just having multiple photos of dogs sitting with their face in the center of a frame will result in failure to detect dogs in actual images.
+3) Typically a photo contains way more pixels than a frame in a video file which is not needed for object detection adding overhead to process a high-resolution images
 
 Also you may feel like you want to just hire someone else to delegate this laborial task of annotating images, but I recommend at least you go through images for a few hours yourself to come up with a guideline before you ask someone else to do it.
 
-Criteria I had to establish for my own are:
+Criteria I had to establish for me are the following:
 * How to handle images in which a dog is only partially seen
 * How to handle images in which a dog is blocked by another dog or another object
 * How to handle their hair in positioning a bounding box
 
-I am sure that any annotation will have a need for defining its own criteria.
-
 ### Step 3.2. Obtain a software product to mark location of your objects in each image
-I used a product called labelImg.  [The developer's github page](https://github.com/tzutalin/labelImg) has detailed steps to install and use the software.  I set up labelImg on my Mac so these steps are for that.  I think steps for Linux should be slightly different as /Applications directory is specific to Mac.
+I used a product called _labelImg_.  [The developer's github page](https://github.com/tzutalin/labelImg) has detailed steps to install and use the software.  I set up labelImg on my Mac so these steps are for that.  I think steps for Linux should be slightly different as /Applications directory is specific to Mac.
 
 I followed the steps the listed on the above page.  As I already had Python & pip set up, I started with:
 ```
@@ -150,14 +148,14 @@ mv "dist/labelImg.app" /Applications
 
 With these steps, you now have labelImg installed in your Applications folder.
 
-## Step 3.3. Mark a location in each image 
+### Step 3.3. Mark a location in each image 
 Marking a location or annotation for each object means:
 
 * Identify an object in each image
 * Assign a label to each object
 * Marking a bounding box for each object
 
-At the end of this step, for each image file, you want to have a corresponding XML file that containing the coordinates of objects in the image.
+At the end of this step, for each image file, you want to have a corresponding XML file that contains the coordinates of objects in the image.
 
 <img src='assets/images/labelimg_screenshot.png' width='800px'>
 
@@ -206,11 +204,11 @@ Below is the actual file (aimee_pink_00537.xml) that was created for the image a
 
 This format is called [PASCAL VOC](http://host.robots.ox.ac.uk/pascal/VOC/) format. (If you want to view a dataset tagged with this format, I found that you can download from the [GluonCV's website](https://gluon-cv.mxnet.io/build/examples_datasets/pascal_voc.html))
 
-Using labelImg was straightforward, but it took a long time to go through. labelImg has short cut keys and they helped a lot.  Out of 839 images that I had, I went through 749 images and some of the images did not have any dogs, and I also annotated 3 images with the text format by mistake. I annotated 707 files.
+Using labelImg was straightforward, but it took a long time to go through. labelImg has short cut keys and they helped a lot.  Out of 839 images that I had, I went through 749 images. Some of the images did not have any dogs and I also annotated 3 images with the text format by mistake, so I ended up annotating 707 files.
 
 ### Step 3.4. Convert the image and location data into a file format that your ML software can process
 Now you have a set of JPEG images and corresponding XML files in the annotation directory.
-In this step, you need to combine all of them into a single TFRecord format that the training script needs.
+In this step, you need to combine all of them into a single TFRecord file format that the training script needs.
 
 I made a copy of models/research/object_detection/create_pascal_tf_record.py and modified it so that it reads from my image and annotation directories.
 
