@@ -1,4 +1,4 @@
-# Recipe for a Magic: Using Custom Classes to Train and Predict with TensorFlow Object Detection API
+# Using Custom Classes to Train and Predict with TensorFlow Object Detection API
 Hide Inada
 
 # Overview
@@ -209,24 +209,78 @@ In addition to the dataset in TFRecords format that you created in step ??? and 
 * Training script
 * Label map file
 
+### Step 5.1. Configuration file
+
 Corresponding config file that matches the downloded pre-trained model should be already in the samples/configs directory of the source tree.
 In my case, I used:
 models/research/object_detection/samples/configs/faster_rcnn_resnet50_coco_config
 
 I tweaked the following parameters:
 
-| Parameter | Value |
-|---|---|
-| num_classes | 3 | 
-| fine_tune_check_point | <the path where the downloaded model was copied> | 
-| tf_record_input_reader input_path | < the path to the tf records file that I have created> |
-| label_map_path | <the path to the label_map file that I have created |
- 
+| Parameter | Value | Example |
+|---|---|---|
+| num_classes | Number of classes that your dataset has | 3 | 
+| fine_tune_check_point | <path where the downloaded model was copied and the prefix of the prefix> | /home/hinada/downloaded_model/model.ckpt |
+| tf_record_input_reader input_path | < path to the tf records file> | /home/hinada/data/dog.tfrecords |
+| tf_record_input_reader label_map_path | <path to the label_map file that I have created | /home/hinada/data/dog_label_map.pbtxt |
+| eval_input_reader input_path | <path to the tf records file> | /home/hinada/data/dog.tfrecords |
+| eval_input_reader label_map_path | <path to the label_map file that I have created | /home/hinada/data/dog_label_map.pbtxt |
+    
+There are two issues to note:
+First, regarding the 'fine_tune_check_point' parameter, if you download the pre-trained model and place it in a directory (e.g. /home/hinada/downloaded_model), if you type ls, you should see:
+```
+checkpoint  frozen_inference_graph.pb  model.ckpt.data-00000-of-00001  model.ckpt.index  model.ckpt.meta  pipeline.config  saved_model
+```
+I specified the full path of the directory plus "model.ckpt".
+
+Second, regarding eval_input_reader settings, I started tweaking the configuration file after I created the TFRecord dataset, so I didn't know that there is are parameters for the validation set.  I just specified the training set, but if you want to check the validation number, you might want to create a separate validation dataset in TFRecord and specify here.
+       
+### Step 5.2. Training script
 I wasn't able to locate train.py at the object_detection directory where others listed in their articles.
 I did a search on the internet and found out that the script was moved to the directory called legacy.
 
-I tweaked the train.py to do the following:
-??? (to be updated)
+I duplicated train.py and renamed the copy to train_dog.py and made the following changes:
+
+1 Added Python Path
+```
+import sys
+sys.path.append("../..")
+sys.path.append("<A directory that I cloned the repo>"/models/research/slim")
+```
+
+2. Put a directory where I want to save the checkpoint as the default for the train_dir
+```
+flags.DEFINE_string('train_dir', '/tmp/od/checkpoint_and_summaries',
+```
+
+3. Specify the config directory
+```
+flags.DEFINE_string('pipeline_config_path', '../samples/configs/faster_rcnn_resnet50_coco.config',
+```
+
+### Step 5.3. Label map file       
+You need the file to create a human-readable label to an integer.
+Under the objection_detection/data directory, there are many examples that you can use as a base.
+In my case, I created a file called dog_label_map.pbtxt which contains below:
+
+```
+item {
+  id: 1
+  name: 'aimee'
+}
+
+item {
+  id: 2
+  name: 'pink'
+}
+
+item {
+  id: 3
+  name: 'olivia'
+}
+```
+
+## Step 6. Training
 
 I stopped training at 30956 step with loss = 0.0803
 The last step took 0.233 sec/step.
