@@ -48,7 +48,7 @@ If you run training locally, I strongly recommend a machine with a GPU.  If you 
 ## Skills
 * Python programming skill
 
-For going through this tutorial to reproduce my result, neigher knowledge for TensorFlow programming nor familiarity with machine learning is needed.
+For going through this tutorial to reproduce my result, neither knowledge for TensorFlow programming nor familiarity with machine learning is needed.
 
 ## Expected time to take
 * 2 days (with annotating the photos taking the largest chunk).
@@ -118,7 +118,7 @@ If you want to classify objects that are accessible to you, I recommend using a 
     For example, in most of the images contained in my video, my dogs are not in picture-card-quality poses but in more dynamic and realistsic positions.  As I mentioned in my article [Limitation of Neural Networks](https://www.linkedin.com/pulse/limitation-neural-networks-hideyuki-inada/), it's very important that you have images that are similar to what you want to predict.  Just having multiple photos of dogs sitting with their face in the center of a frame will result in failure to detect dogs in actual images.
 3) Typically a photo contains way more pixels than a frame in a video file which is not needed for object detection adding overhead to process a high-resolution images
 
-Also you may feel like you want to just hire someone else to delegate this laborial task of annotating images, but I recommend at least you go through images for a few hours yourself to come up with a guideline before you ask someone else to do it.
+Also you may feel like you want to just hire someone else to delegate this laborious task of annotating images, but I recommend at least you go through images for a few hours yourself to come up with a guideline before you ask someone else to do it.
 
 Criteria I had to establish for me are the following:
 * How to handle images in which a dog is only partially seen
@@ -230,7 +230,7 @@ In addition to the dataset in TFRecords format that you created in step 3 and th
 
 ### Step 5.1. Configuration file
 
-You need a config file that matches the downloded pre-trained model.  A matching config file should already be in the samples/configs directory of the source tree.
+You need a config file that matches the downloaded pre-trained model.  A matching config file should already be in the samples/configs directory of the source tree.
 In my case, I used:
 models/research/object_detection/samples/configs/faster_rcnn_resnet50_coco.config
 
