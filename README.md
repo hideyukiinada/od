@@ -294,8 +294,9 @@ training script.
 Once you are done with training, you need to convert the model to a form that the prediction script can process:
 You'll use a script included in a source tree. I made a copy of object_detection/export_inference_graph.py and saved the copy as export_inference_graph_dog.py.
 
-Changes that I made are very similar to the training script.
+You can also refer to [exporting_models.md] (https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/exporting_models.md) in the source tree for more details.
 
+Changes that I made are very similar to the training script.
 
 1. Added Python Paths to some directories
 ```
@@ -352,8 +353,7 @@ By redefining MODEL_NAME, you are instructing the prediction script to read the 
 3. Set PATH_TO_LABELS to the full path of my label map file.
 4. Added code to read a test image one at a time, predict and save.
 
-I believe that you need to follow the instructions below page to export the model:
-https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/exporting_models.md
+If you want to process a video like I did, you can just reassemble the processed image using ffmpeg.
 
 # References
 &#91;1&#93; Priyanka Kochhar, Building a Toy Detector with Tensorflow Object Detection API, https://www.kdnuggets.com/2018/02/building-toy-detector-tensorflow-object-detection-api.html
