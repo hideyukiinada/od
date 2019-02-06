@@ -76,11 +76,12 @@ This produces a script called object_detection.py in the current directory.
 
 At the end of the script, it contains the code to display a sample image using matplotlib, but I had a problem in matplotlib on my box, so I added code to save images on the file system using the PIL package.
 
-At the end of the step, 
+At the end of the step, you should be able to see the photos below:
 
-??? Add photo here.
+<img src='assets/images/sample0.jpg' width='400px'>
+<img src='assets/images/sample1.jpg' width='400px'>
 
-This photo is included in the source tree and licensed under [Apache License 2.0](https://github.com/tensorflow/models/blob/master/LICENSE)
+These images are included in the source tree and licensed under [Apache License 2.0](https://github.com/tensorflow/models/blob/master/LICENSE)
 
 ## Step 3. Create your own dataset for object detection
 There are four sub steps in this step:
