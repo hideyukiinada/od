@@ -9,9 +9,9 @@ Is it difficult to set up and use a machine learning system to detect an object?
 
 <img src='assets/images/aimee_puppy_social.jpg' width='400px'>
 
-For you to detect an object that was not in the model, then more steps are needed.
+For you to detect an object that was not in the model provided, then more steps are needed to retrain the model.
 
-Here are the logical steps:
+Here are the high-level steps:
 1. Obtain the machine learning software
 2. Verify that object detection works with sample images
 3. Create your own dataset for object detection
@@ -21,13 +21,13 @@ Here are the logical steps:
 7. Run prediction with the model
 
 No matter what ML software you use, I believe that these steps are the same or similar.
-Using these steps, I was able to train the model with my own dataset and used the model for predicting positions of my dogs.
+Following these steps, I was able to train a model with my own dataset and used the model for predicting positions of my dogs.
 
 I used TensorFlow Object Detection API, and I would like to go over step-by-step how I did it.  You do _not_ need to know about machine learning to follow this tutorial, but need to know Python to make modifications to scripts.
 
-I'd also like to thank authors of articles I used as a reference.  They are listed at the bottom of this page.
+I would also like to thank authors of articles I used as a reference.  They are listed at the bottom of this page.  Without tips from people who have already done this, going through this exercise myself would have been much more difficult.
 
-# What you need to actually go through the steps yourself
+# What you need to go through the steps yourself
 ## Software
 * TensorFlow
 * Python
