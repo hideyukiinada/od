@@ -78,8 +78,8 @@ At the end of the script, it contains the code to display a sample image using m
 
 At the end of the step, you should be able to see the photos below:
 
-<img src='assets/images/sample0.jpg' width='400px'>
-<img src='assets/images/sample1.jpg' width='400px'>
+<img src='assets/images/sample_0.jpg' width='400px'>
+<img src='assets/images/sample_1.jpg' width='400px'>
 
 These images are included in the source tree and licensed under [Apache License 2.0](https://github.com/tensorflow/models/blob/master/LICENSE)
 
