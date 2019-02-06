@@ -8,7 +8,7 @@ For example, [my image classification app](https://github.com/hideyukiinada/ic) 
 Is it difficult to set up and use a machine learning system to detect an object?  Not really.  If you use a pre-trained model, it is easy to do so.  However you can only classify the location of objects the model was trained for. For example, the below photo shows images of puppies with my dog Aimee at a puppy social that I processed with YOLO without using my own dataset. Though all puppies were detected, they are all marked as a dog, and you don't know which one is Aimée.  
 
 <img src='assets/images/aimee_puppy_social.jpg' width='400px'>
-
+(If you are interested in checking out YOLO, please refer to [my blog post in December](https://hideyukiinada.github.io/2018/12/23/yolo.html))
 For you to detect an object that was not in the model provided, then more steps are needed to retrain the model.
 
 Here are the high-level steps:
