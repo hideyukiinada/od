@@ -107,7 +107,9 @@ Each JPEG file was 1920x1080 with 3 channels.
 
 If you want to classify objects that are accessible to you, I recommend using a video instead of taking a photo or collecting images over the Internet because:
 1) It is much faster to capture a video with lots of images instead of taking separate photos
-2) You can capture way more diverse shapes of your objects especially if you are capturing images of animals.  For example, in most of the images contained in my video, my dogs are not in picture-card-quality poses but in more dynamic yet realistsic positions.  As I mentioned in my article [Limitation of Neural Networks](https://www.linkedin.com/pulse/limitation-neural-networks-hideyuki-inada/), it's very important that you have images that are similar to what you want to predict.  Just having multiple photos of dogs sitting with their face in the center of a frame will result in failure to classify actual images.
+2) You can capture way more diverse shapes of your objects especially if you are capturing images of animals.  
+    For example, in most of the images contained in my video, my dogs are not in picture-card-quality poses but in more dynamic yet realistsic positions.  As I mentioned in my article [Limitation of Neural Networks](https://www.linkedin.com/pulse/limitation-neural-networks-hideyuki-inada/), it's very important that you have images that are similar to what you want to predict.  Just having multiple photos of dogs sitting with their face in the center of a frame will result in failure to classify actual images.
+3) A photo contains way more pixels than a video file which is not needed for object detection adding overhead to process a high-resolution images
 
 Also you may feel like you want to just hire someone else to delegate this laborial task of annotating images, but I recommend at least you go through images for a few hours yourself to come up with a guideline before you ask someone else to do it.
 
