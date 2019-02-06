@@ -261,7 +261,7 @@ I did a search on the internet and found out that the script was moved to the di
 
 I duplicated train.py and renamed the copy to train_dog.py.
 To make it work in my environment, I did the following:
-* Added additional Python Paths to include "../.." and "<A directory that I cloned the repo>"/models/research/slim")
+* Added additional Python Paths to include "../.." and "<A directory that I cloned the repo>/models/research/slim"
 * Set the 'train_dir' flag to a directory where I want to store check point files (e.g. '/tmp/od/checkpoint_and_summaries')
 * Set 'pipeline_config_path' flag to the full path of the config file (e.g. '../samples/configs/faster_rcnn_resnet50_coco.config')
 
