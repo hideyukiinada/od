@@ -1,4 +1,4 @@
-# Using Custom Classes to Train and Predict with TensorFlow Object Detection API
+# Recipe for a Magic: Using Custom Classes to Train and Predict with TensorFlow Object Detection API
 Hide Inada
 
 # Overview
