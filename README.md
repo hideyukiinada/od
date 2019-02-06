@@ -302,14 +302,15 @@ item {
 Once you are done with all the changes, you can just run the training script.
 I trained the model for a few hours and stopped training at 30956 step with loss = 0.0803.
 
-During the training, you might want to make sure that check point files are created in the dirctory you specified in your
+During the training, you might want to make sure that check point files are created in the directory you specified in your
 training script.
 
 ## Step 6. Convert the model to be used for prediction
-Once you are done with training, you need to convert the model to a form that the prediction script can process:
-You'll use a script included in a source tree. I made a copy of object_detection/export_inference_graph.py and saved the copy as export_inference_graph_dog.py.
+Once you are done with training, you need to convert the model to a form that the prediction script can process.
 
-You can also refer to [exporting_models.md] (https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/exporting_models.md) in the source tree for more details.
+You'll be using a script included in a source tree. I made a copy of object_detection/export_inference_graph.py and saved the copy as export_inference_graph_dog.py.
+
+You can also refer to [exporting_models.md](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/exporting_models.md) in the source tree for more details.
 
 Changes that I made are very similar to the training script.
 
