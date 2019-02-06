@@ -26,7 +26,7 @@ Here are the high-level steps:
 7. Run prediction with the model
 
 No matter what ML software you use, I believe that these steps are the same or similar.
-Following these steps, I was able to train a model with my own dataset and used the model for predicting positions of my dogs.
+Following these steps, I was able to train a model with my own dataset and used the model for predicting positions of my dogs. In the cover photo, you see the label "aimee" appears on the top-left of the bounding box.
 
 I used TensorFlow Object Detection API, and I would like to go over step-by-step how I did it.
 
