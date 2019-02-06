@@ -147,10 +147,11 @@ mv "dist/labelImg.app" /Applications
 With these steps, you now have labelImg installed in your Applications folder.
 
 ## Step 3.3. Mark a location in each image 
-Marking a location for each object means:
+Marking a location or annotation for each object means:
 
 * Identify an object in each image
-* Marking a bounding box for each object.
+* Assign a label to each object
+* Marking a bounding box for each object
 
 At the end of this step, for each image file, you want to have a corresponding XML file that containing the coordinates of objects in the image.
 
