@@ -40,7 +40,8 @@ I would also like to thank authors of articles I used as a reference.  They are 
 
 ## Hardware
 * Hardware to run training & prediction
-If you run training locally, I strongly recommend a machine with a GPU.  I believe that you can run training in Google's cloud but I haven't tried that myself.
+
+If you run training locally, I strongly recommend a machine with a GPU.  If you haven't, please check out [my article on the speed gain provided by GPU over CPU](https://www.linkedin.com/pulse/whats-speed-difference-between-running-ml-job-gpu-vs-cpu-inada/).  I believe that you can run training in Google's cloud but I haven't tried that myself.
 
 ## Skills
 * Python programming skill
