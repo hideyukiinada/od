@@ -30,6 +30,7 @@ I would also like to thank authors of articles I used as a reference.  They are 
 # What you need to go through the steps yourself
 ## Software
 * TensorFlow
+* TensorFlow Object Detection API source code
 * Python
 * Python pip
 * Software to mark (annotate) the location of object (e.g. labelImg)
